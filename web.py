@@ -17,6 +17,17 @@ class MainPage(webapp.RequestHandler):
   count = 0
   def get(self):
     self.response.headers['Content-Type'] = 'text/plain'
+    self.response.out.write("""Welcom on Craigslist Searchy's profile !!
+
+This page does not contain much information for now, check http://code.google.com/p/craigslist-searchy/ instead !
+
+Thanks !""")
+
+
+class TestPage(webapp.RequestHandler):
+  count = 0
+  def get(self):
+    self.response.headers['Content-Type'] = 'text/plain'
     print ''
 
     waveId = 'asdfasdfa'
@@ -35,14 +46,6 @@ class MainPage(webapp.RequestHandler):
   def PrintItem(self, item):
       craigslistStorage.AddResultItem(self.wave, item.url)
       self.count += 1
-
-class GadgetPage(webapp.RequestHandler):
-  def get(self):
-    movieID = self.request.get('movieID')
-
-    self.response.headers['Content-Type'] = 'text/xml'
-    path = os.path.join(os.path.dirname(__file__), 'gadget.html')
-    self.response.out.write(template.render(path, template_values))
 
 
 class UpdateWavesPage(webapp.RequestHandler):
@@ -80,7 +83,7 @@ class FlushCachePage(webapp.RequestHandler):
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
-                                      ('/gadget.xml', GadgetPage),
+                                      ('/test', TestPage),
                                       ('/flush', FlushCachePage),
                                       ('/update', UpdateWavesPage)],
                                      debug=True)
