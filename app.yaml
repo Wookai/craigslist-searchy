@@ -1,0 +1,15 @@
+application: craigslist-searchy
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /_wave/.*
+  script: craigslistRobot.py
+- url: /assets
+  static_dir: assets
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
+- url: /.*
+  script: web.py
