@@ -8,7 +8,7 @@ import re
 import craigslistStorage
 import craigslistParser
 
-craigslistLinkPattern = re.compile('http://[\w\.]+\.craigslist\.(org|ca)/[\w/?=&+]+')
+craigslistLinkPattern = re.compile('http://[\w\.]+\.craigslist\.(org|ca)/[\w/?=&+%]+')
 
 def OnRobotAdded(properties, context):
   root_wavelet = context.GetRootWavelet()
@@ -98,7 +98,7 @@ class CraigslistWaveUpdater:
 if __name__ == '__main__':
   myRobot = robot.Robot('Craigslist Searchy',
       image_url='http://craigslist-searchy.appspot.com/assets/images/logo.png',
-      version='1.1.6',
+      version='1.1.7',
       profile_url='http://craigslist-searchy.appspot.com/')
   myRobot.RegisterHandler(events.BLIP_SUBMITTED, OnBlipSubmitted)
   myRobot.RegisterHandler(events.WAVELET_SELF_ADDED, OnRobotAdded)

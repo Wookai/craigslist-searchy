@@ -4,6 +4,7 @@ import urllib
 import re
 import urlparse
 import logging
+import dateutil.parser
 
 
 class ResultItem:
@@ -124,7 +125,7 @@ class ResultsList:
             item.imageURLs.append(i.group('url'))
 
         dateEmail = self.detailsDateEmailPattern.search(html)
-        item.date = dateEmail.group('date')
+        item.date = dateEmail.group('date') # dateutil.parser.parse(dateEmail.group('date'))
         item.email = dateEmail.group('email')
 
         return True
